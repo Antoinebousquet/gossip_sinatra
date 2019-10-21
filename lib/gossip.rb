@@ -1,5 +1,5 @@
 class Gossip
-	attr_accessor :author, :content, :fin_url
+	attr_accessor :author, :content
 
 	def initialize(author, content)
 		@author = author
@@ -13,7 +13,7 @@ class Gossip
 	end
 
 	def self.all
-	  all_gossips = [] #on initialise un array vide
+	  all_gossips = [] 
 
 	  CSV.read("./db/gossip.csv").each do |csv_line|
 	    all_gossips << Gossip.new(csv_line[0], csv_line[1])
@@ -21,10 +21,11 @@ class Gossip
 	  return all_gossips
 	end
 
-	def self.find(fin_url)
-		end_url = "http://localhost:4567/gossips/" + fin_url
-		@fin_url = fin_url
-  	return end_url
+	def self.find(gossip_id)
+		puts gossip_id
+		puts all[gossip_id]
+		return all[gossip_id]
 	end
 
 end
+ 

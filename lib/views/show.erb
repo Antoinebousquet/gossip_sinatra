@@ -3,16 +3,9 @@
   	<title>The Gossip Project</title>
   </head>
   <body>
-
-    <h1>Voici la page du potin n°X</h1>
-    <a href="/gossips/new/">Voici la page du potin n°X</a>
-    <% gossips.each do |gossip| %>
-        <p>
-          <%= gossip.fin_url %>
-        </p>
-      <% end %>
-    <p>Son auteur :</p>
-    <p>Le contenu du potin :</p>
-    <a href="/gossips/new/">Pages des potins</a>
+    <h1>Voici la page du potin n° <%= gossip_id %></h1>
+    <p>Son auteur : <%= wanted_gossip.author %></p>
+    <p>Son contenu : <%= wanted_gossip.content %></p>
+    <p>Retour à la page d'accueil des potins <a href ='/'>Ici</a>.</p>
   </body>
 </html>

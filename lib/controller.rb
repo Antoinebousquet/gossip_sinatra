@@ -8,17 +8,16 @@ class ApplicationController < Sinatra::Base
   
 	get '/gossips/new/' do
     erb :new_gossip
+    ## Sinon problème d'affichage
+    # redirect '/'
   end
 
 	post '/gossips/new/' do
 	  Gossip.new(params["gossip_author"], params["gossip_content"]).save
-  	redirect '/'
 	end
 
 	get '/gossips/:id/' do
-  	end_url = params['id']
-		url_entiere = Gossip.find(end_url)
-		erb :show
+  	erb :show, locals: { gossip_id: params[:id], wanted_gossip: Gossip.find(params[:id].to_i) }
 	end
 
 end
